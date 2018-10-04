@@ -42,14 +42,13 @@ public class EAContractCleaner extends BaseDfidTenderCleaner {
     @Override
     protected final void registerSpecificPlugins() {
         pluginRegistry
-                .registerPlugin("lot", new LotPlugin(NUMBER_FORMAT, DATE_FORMATTER, new HashMap<>()))
-                .registerPlugin("price", new PricePlugin(NUMBER_FORMAT))
-                .registerPlugin("supplyType",  new TenderSupplyTypePlugin(supplyTypeMapping()))
-                .registerPlugin("dfid-publication",
-                        new DFIDTenderPublicationPlugin(NUMBER_FORMAT, DATE_FORMATTER, null))
-                .registerPlugin("dfid-longtext", new DFIDTenderLongTextPlugin())
-                .registerPlugin("address", new AddressPlugin())
-                .registerPlugin("integer", new IntegerPlugin(NUMBER_FORMAT));
+            .registerPlugin("dfid-publication", new DFIDTenderPublicationPlugin(NUMBER_FORMAT, DATE_FORMATTER, null))
+            .registerPlugin("dfid-longtext", new DFIDTenderLongTextPlugin())
+            .registerPlugin("lot", new LotPlugin(NUMBER_FORMAT, DATE_FORMATTER, new HashMap<>()))
+            .registerPlugin("price", new PricePlugin(NUMBER_FORMAT))
+            .registerPlugin("supplyType",  new TenderSupplyTypePlugin(supplyTypeMapping()))
+            .registerPlugin("address", new AddressPlugin())
+            .registerPlugin("integer", new IntegerPlugin(NUMBER_FORMAT));
     }
 
     /**

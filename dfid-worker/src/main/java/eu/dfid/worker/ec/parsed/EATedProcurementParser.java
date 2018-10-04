@@ -83,6 +83,7 @@ public final class EATedProcurementParser extends BaseDFIDTenderParser {
                 .setDispatchDate(JsoupUtils.selectText("DS_DATE_DISPATCH", codifData))
                 .setSourceFormType(sourceFormType)
                 .setSourceTenderId(parseSourceTenderId(originNode))
+                .setSource(PublicationSources.EU_TED)
                 .setIsIncluded(true))
             .addPublications(parsePreviousPublications(originNode))
             .setCpvs(parseCPV(JsoupUtils.select("ORIGINAL_CPV", noticeData)))

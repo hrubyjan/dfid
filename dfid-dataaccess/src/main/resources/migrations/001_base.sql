@@ -261,3 +261,44 @@ CREATE TABLE exchange_rates (
 );
 
 CREATE INDEX exchange_rates_data_idx ON exchange_rates USING gin (data jsonb_path_ops);
+
+
+CREATE TABLE postcode_nuts (
+    postcode character varying(50),
+    nuts character varying(10),
+    country character varying(2)
+);
+CREATE INDEX postcode_nuts_postcode_idx ON postcode_nuts (postcode);
+CREATE INDEX postcode_nuts_country_idx ON postcode_nuts (country);
+
+
+CREATE TABLE parsed_project (
+    id character varying(255) PRIMARY KEY,
+    data jsonb,
+    created timestamp without time zone,
+    createdby character varying(255),
+    createdbyversion character varying(255),
+    modified timestamp without time zone,
+    modifiedby character varying(255),
+    modifiedbyversion character varying(255)
+);
+
+CREATE INDEX parsed_project_data_idx ON parsed_project USING gin (data jsonb_path_ops);
+CREATE INDEX parsed_project_modifiedby_idx ON parsed_project (modifiedby);
+CREATE INDEX parsed_project_modifiedbyversion_idx ON parsed_project (modifiedbyversion);
+
+
+CREATE TABLE clean_project (
+    id character varying(255) PRIMARY KEY,
+    data jsonb,
+    created timestamp without time zone,
+    createdby character varying(255),
+    createdbyversion character varying(255),
+    modified timestamp without time zone,
+    modifiedby character varying(255),
+    modifiedbyversion character varying(255)
+);
+
+CREATE INDEX clean_project_item_data_idx ON clean_project USING gin (data jsonb_path_ops);
+CREATE INDEX clean_project_item_modifiedby_idx ON clean_project (modifiedby);
+CREATE INDEX clean_project_item_modifiedbyversion_idx ON clean_project (modifiedbyversion);

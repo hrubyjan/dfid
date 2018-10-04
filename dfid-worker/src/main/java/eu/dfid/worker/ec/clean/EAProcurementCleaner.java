@@ -57,13 +57,12 @@ public class EAProcurementCleaner extends BaseDfidTenderCleaner {
         lotMappings.put("statusMapping", getLotStatusMapping());
 
         pluginRegistry
-                .registerPlugin("dfid-project", new DFIDTenderProjectPlugin(null, null))
-                .registerPlugin("dfid-publications",
-                        new DFIDTenderPublicationPlugin(NUMBER_FORMAT, DATE_FORMATTER, null))
-                .registerPlugin("lot", new LotPlugin(NUMBER_FORMAT, DATE_FORMATTER, lotMappings))
-                .registerPlugin("supplyType", new TenderSupplyTypePlugin(supplyTypeMapping()))
-                .registerPlugin("datetime", new DateTimePlugin(DATETIME_FORMATTER))
-                .registerPlugin("price", new PricePlugin(NUMBER_FORMAT));
+            .registerPlugin("dfid-project", new DFIDTenderProjectPlugin(null, null))
+            .registerPlugin("dfid-publications", new DFIDTenderPublicationPlugin(NUMBER_FORMAT, DATE_FORMATTER, null))
+            .registerPlugin("lot", new LotPlugin(NUMBER_FORMAT, DATE_FORMATTER, lotMappings))
+            .registerPlugin("supplyType", new TenderSupplyTypePlugin(supplyTypeMapping()))
+            .registerPlugin("datetime", new DateTimePlugin(DATETIME_FORMATTER))
+            .registerPlugin("price", new PricePlugin(NUMBER_FORMAT));
     }
 
     @Override

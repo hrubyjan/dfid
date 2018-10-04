@@ -65,7 +65,7 @@ public final class TenderSizeUtils {
             return null;
         }
 
-        String configKey = "tenderSize.treshold";
+        String configKey = "tenderSize.threshold";
 
         configKey += "." + getBuyerTypeKey(tender);
         configKey += "." + getSupplyTypeKey(tender);
@@ -76,13 +76,13 @@ public final class TenderSizeUtils {
             return null;
         }
 
-        BigDecimal treshold = convert(
+        BigDecimal threshold = convert(
                 new BigDecimal(config.getParam(configKey)),
                 nationalCurrency,
                 firstDayOfPeriod);
 
 
-        if (treshold.multiply(new BigDecimal(1.02)).compareTo(tenderPrice) == -1) {
+        if (threshold.multiply(new BigDecimal(1.02)).compareTo(tenderPrice) == -1) {
             return TenderSize.ABOVE_THE_THRESHOLD;
         } else {
             return TenderSize.BELOW_THE_THRESHOLD;
@@ -362,7 +362,7 @@ public final class TenderSizeUtils {
             return null;
         }
 
-        Set<String> result = new HashSet<String>();
+        Set<String> result = new HashSet<>();
 
         for (String cpv : rawCPVs) {
             if (cpv.length() == 5) {

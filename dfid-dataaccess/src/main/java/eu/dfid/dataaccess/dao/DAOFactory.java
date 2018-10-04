@@ -1,8 +1,6 @@
 package eu.dfid.dataaccess.dao;
 
-import eu.dfid.dataaccess.dao.hibernate.HibernateDAOFactory;
 import eu.dfid.dataaccess.dao.jdbc.JdbcDAOFactory;
-import eu.dfid.dataaccess.dao.mongo.MongoDAOFactory;
 import eu.dl.core.config.Config;
 import eu.dl.dataaccess.dao.CleanTenderDAO;
 import eu.dl.dataaccess.dao.CrawlerAuditDAO;
@@ -20,7 +18,7 @@ public abstract class DAOFactory {
     /**
      * Default factory type.
      */
-    private static final DAOFactoryType DEFAULT_FACTORY_TYPE = DAOFactoryType.HIBERNATE;
+    private static final DAOFactoryType DEFAULT_FACTORY_TYPE = DAOFactoryType.JDBC;
 
     /**
      * Logger.
@@ -31,7 +29,7 @@ public abstract class DAOFactory {
      * DAO types supported by the factory.
      */
     private enum DAOFactoryType {
-        MONGO_DB, HIBERNATE, JDBC
+        JDBC
     }
 
     /**
@@ -63,15 +61,11 @@ public abstract class DAOFactory {
      */
     public static DAOFactory getDAOFactory(final DAOFactoryType factoryType) {
         switch (factoryType) {
-        case MONGO_DB:
-            return new MongoDAOFactory();
-        case HIBERNATE:
-            return new HibernateDAOFactory();
-        case JDBC:
-            return new JdbcDAOFactory();
-        default:
-            logger.error("Unknown factory type while trying to create DAO factory.");
-            throw new IllegalArgumentException("Unknown factory type.");
+            case JDBC:
+                return new JdbcDAOFactory();
+            default:
+                logger.error("Unknown factory type while trying to create DAO factory.");
+                throw new IllegalArgumentException("Unknown factory type.");
         }
     }
 

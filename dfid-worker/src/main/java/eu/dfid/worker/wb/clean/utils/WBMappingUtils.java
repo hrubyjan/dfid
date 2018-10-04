@@ -186,7 +186,7 @@ public final class WBMappingUtils {
         mapping.put(CountryCode.GH, Collections.singletonList("Ghana"));
         mapping.put(CountryCode.GI, Collections.singletonList("Gibraltar"));
         mapping.put(CountryCode.GL, Collections.singletonList("Greenland"));
-        mapping.put(CountryCode.GM, Collections.singletonList("Gambia"));
+        mapping.put(CountryCode.GM, Arrays.asList("Gambia", "Gambia, The"));
         mapping.put(CountryCode.GN, Collections.singletonList("Guinea"));
         mapping.put(CountryCode.GP, Collections.singletonList("Guadeloupe"));
         mapping.put(CountryCode.GQ, Collections.singletonList("Equatorial Guinea"));
@@ -217,7 +217,7 @@ public final class WBMappingUtils {
         mapping.put(CountryCode.JO, Collections.singletonList("Jordan"));
         mapping.put(CountryCode.JP, Collections.singletonList("Japan"));
         mapping.put(CountryCode.KE, Collections.singletonList("Kenya"));
-        mapping.put(CountryCode.KG, Collections.singletonList("Kyrgyzstan"));
+        mapping.put(CountryCode.KG, Arrays.asList("Kyrgyzstan", "Kyrgyz Republic"));
         mapping.put(CountryCode.KH, Collections.singletonList("Cambodia"));
         mapping.put(CountryCode.KI, Collections.singletonList("Kiribati"));
         mapping.put(CountryCode.KM, Collections.singletonList("Comoros"));
@@ -229,7 +229,7 @@ public final class WBMappingUtils {
         mapping.put(CountryCode.KZ, Collections.singletonList("Kazakhstan"));
         mapping.put(CountryCode.LA, Collections.singletonList("Lao People's Democratic Republic"));
         mapping.put(CountryCode.LB, Collections.singletonList("Lebanon"));
-        mapping.put(CountryCode.LC, Collections.singletonList("Saint Lucia"));
+        mapping.put(CountryCode.LC, Arrays.asList("Saint Lucia", "St. Lucia"));
         mapping.put(CountryCode.LI, Collections.singletonList("Liechtenstein"));
         mapping.put(CountryCode.LK, Collections.singletonList("Sri Lanka"));
         mapping.put(CountryCode.LR, Collections.singletonList("Liberia"));
@@ -240,7 +240,7 @@ public final class WBMappingUtils {
         mapping.put(CountryCode.LY, Collections.singletonList("Libya"));
         mapping.put(CountryCode.MA, Collections.singletonList("Morocco"));
         mapping.put(CountryCode.MC, Collections.singletonList("Monaco"));
-        mapping.put(CountryCode.MD, Collections.singletonList("Moldova, Republic of"));
+        mapping.put(CountryCode.MD, Arrays.asList("Moldova, Republic of", "Moldova"));
         mapping.put(CountryCode.ME, Collections.singletonList("Montenegro"));
         mapping.put(CountryCode.MF, Collections.singletonList("Saint Martin (French part)"));
         mapping.put(CountryCode.MG, Collections.singletonList("Madagascar"));

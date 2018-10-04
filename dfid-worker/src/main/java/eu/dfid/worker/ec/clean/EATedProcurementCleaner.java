@@ -73,21 +73,19 @@ public class EATedProcurementCleaner extends BaseDfidTenderCleaner {
     @Override
     protected final void registerSpecificPlugins() {
         pluginRegistry
+            .registerPlugin("dfid-publication", new DFIDTenderPublicationPlugin(NUMBER_FORMAT, DATE_FORMATTERS, formTypeMapping()))
+            .registerPlugin("dfif-date", new DFIDTenderDatePlugin(DATE_FORMATTERS))
+            .registerPlugin("dfid-project", new DFIDTenderProjectPlugin(null, null))
+            .registerPlugin("dfid-longtext", new DFIDTenderLongTextPlugin())
             .registerPlugin("body", new BodyPlugin(null, null))
             .registerPlugin("price", new PricePlugin(NUMBER_FORMAT))
             .registerPlugin("supplyType", new TenderSupplyTypePlugin(supplyTypeMapping()))
             .registerPlugin("procedureType", new TenderProcedureTypePlugin(procedureTypeMapping()))
-            .registerPlugin("dfid-publication",
-                new DFIDTenderPublicationPlugin(NUMBER_FORMAT, DATE_FORMATTERS, formTypeMapping()))
             .registerPlugin("date", new DatePlugin(DATE_FORMATTERS))
-            .registerPlugin("dfif-date", new DFIDTenderDatePlugin(DATE_FORMATTERS))
             .registerPlugin("datetime", new DateTimePlugin(DATE_FORMATTERS))
             .registerPlugin("address", new AddressPlugin())
             .registerPlugin("fundings", new FundingsPlugin(NUMBER_FORMAT))
-            .registerPlugin("lots", new LotPlugin(Collections.singletonList(NUMBER_FORMAT), DATE_FORMATTERS,
-                Collections.emptyMap()))
-            .registerPlugin("dfid-project", new DFIDTenderProjectPlugin(null, null))
-            .registerPlugin("dfid-longtext", new DFIDTenderLongTextPlugin());
+            .registerPlugin("lots", new LotPlugin(Collections.singletonList(NUMBER_FORMAT), DATE_FORMATTERS, Collections.emptyMap()));
     }
 
     /**

@@ -3,7 +3,6 @@ package eu.dfid.worker.wb.raw;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptJobManager;
 import eu.dfid.worker.raw.BaseDfidIncrementalPagedSourceHttpCrawler;
 import eu.dl.core.UnrecoverableException;
 import eu.dl.worker.raw.utils.CrawlerUtils;
@@ -136,10 +135,10 @@ public final class WBICRRCrawler extends BaseDfidIncrementalPagedSourceHttpCrawl
      *         current list page
      */
     private void waitForPageLoad(final HtmlPage page) {
-        // wait for all javaScripts to finish on detail list
-        JavaScriptJobManager manager = page.getEnclosingWindow().getJobManager();
+        // Wait for ajax is finished. AJAX creates the loader element with id  before sending request. After AJAX is finished,
+        // removes this loader element.
         int waitTriedTimes = 0;
-        while (manager.getJobCount() > 0 && waitTriedTimes < MAX_SLEEP_COUNT) {
+        while (page.getElementById("loadImg") != null && waitTriedTimes < MAX_SLEEP_COUNT) {
             logger.info("Page is not loaded -> sleep");
             ThreadUtils.sleep(SLEEP_TIME);
             waitTriedTimes++;
